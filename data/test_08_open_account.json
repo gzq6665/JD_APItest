@@ -1,0 +1,11 @@
+{
+  "cases": [
+    {
+      "case_id": "open_account_success",
+      "title": "正常开户",
+      "expected": {
+        "expected_status_code": 200
+      }
+    }
+  ]
+}

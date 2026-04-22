@@ -1,0 +1,11 @@
+{
+  "cases": [
+    {
+      "case_id": "get_register_image_code_success",
+      "title": "正常获取注册图片验证码",
+      "expected": {
+        "expected_status_code": 200
+      }
+    }
+  ]
+}

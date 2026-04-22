@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "case_id": "login_success",
+      "title": "正常登录",
+      "request": {
+        "password": ""
+      },
+      "expected": {
+        "expected_status_code": 200,
+        "expected_text": "登录成功",
+        "expected_status": 200
+      }
+    },
+    {
+      "case_id": "login_wrong_password",
+      "title": "密码错误时登录失败",
+      "request": {
+        "password": "wrong123"
+      },
+      "expected": {
+        "expected_status_code": 200,
+        "expected_text": "密码错误1次,达到3次将锁定账户",
+        "expected_status": 100
+      }
+    }
+  ]
+}

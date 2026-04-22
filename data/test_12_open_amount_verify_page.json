@@ -1,0 +1,13 @@
+{
+  "cases": [
+    {
+      "case_id": "open_amount_verify_page_success",
+      "title": "正常打开额度审批页面",
+      "expected": {
+        "expected_status_code": 200,
+        "expected_text": "OK",
+        "expected_status": 200
+      }
+    }
+  ]
+}

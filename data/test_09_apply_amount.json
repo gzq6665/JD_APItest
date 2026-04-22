@@ -1,0 +1,62 @@
+{
+  "cases": [
+    {
+      "case_id": "apply_amount_success",
+      "title": "正常申请额度",
+      "pre_request": {
+        "user_role": 2
+      },
+      "pre_expected": {
+        "switch_account": {
+          "status_code": 200
+        },
+        "open_amount_page": {
+          "status_code": 200
+        },
+        "get_amount_image_code": {
+          "status_code": 200
+        }
+      },
+      "request": {
+        "amount_type": "1",
+        "amount_account": "8888",
+        "remark": "111",
+        "verify_code": "8888"
+      },
+      "expected": {
+        "expected_status_code": 200,
+        "expected_text": "申请成功",
+        "expected_status": 200
+      }
+    },
+    {
+      "case_id": "apply_amount_wrong_verify_code",
+      "title": "验证码错误时申请额度失败",
+      "pre_request": {
+        "user_role": 2
+      },
+      "pre_expected": {
+        "switch_account": {
+          "status_code": 200
+        },
+        "open_amount_page": {
+          "status_code": 200
+        },
+        "get_amount_image_code": {
+          "status_code": 200
+        }
+      },
+      "request": {
+        "amount_type": "1",
+        "amount_account": "8888",
+        "remark": "111",
+        "verify_code": "0000"
+      },
+      "expected": {
+        "expected_status_code": 200,
+        "expected_text": "验证码错误",
+        "expected_status": 100
+      }
+    }
+  ]
+}

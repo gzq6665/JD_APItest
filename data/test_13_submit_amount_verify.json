@@ -1,0 +1,52 @@
+{
+  "cases": [
+    {
+      "case_id": "submit_amount_verify_success",
+      "title": "正常进行额度审批",
+      "pre_expected": {
+        "get_verify_image_code": {
+          "status_code": 200
+        }
+      },
+      "request": {
+        "add_ip": "1965086794",
+        "category_id": "1",
+        "verify_type": "1",
+        "add_time": "1776840959",
+        "income_amount": "8888",
+        "status": "1",
+        "verify_remark": "111",
+        "valicode": "8888"
+      },
+      "expected": {
+        "expected_status_code": 200,
+        "expected_text": "审核成功",
+        "expected_status": 200
+      }
+    },
+    {
+      "case_id": "submit_amount_verify_wrong_valicode",
+      "title": "验证码错误时额度审批失败",
+      "pre_expected": {
+        "get_verify_image_code": {
+          "status_code": 200
+        }
+      },
+      "request": {
+        "add_ip": "1965086794",
+        "category_id": "1",
+        "verify_type": "1",
+        "add_time": "1776840959",
+        "income_amount": "8888",
+        "status": "1",
+        "verify_remark": "111",
+        "valicode": "0000"
+      },
+      "expected": {
+        "expected_status_code": 200,
+        "expected_text": "验证码错误",
+        "expected_status": 100
+      }
+    }
+  ]
+}

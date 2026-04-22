@@ -1,0 +1,24 @@
+{
+  "cases": [
+    {
+      "case_id": "is_login_success",
+      "title": "正常校验是否登录",
+      "precondition": "logged_in",
+      "expected": {
+        "expected_status_code": 200,
+        "expected_text": "OK",
+        "expected_status": 200
+      }
+    },
+    {
+      "case_id": "is_login_without_login",
+      "title": "未登录时校验登录状态失败",
+      "precondition": "no_login",
+      "expected": {
+        "expected_status_code": 200,
+        "expected_text": "您未登陆！",
+        "expected_status": 250
+      }
+    }
+  ]
+}

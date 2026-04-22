@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "case_id": "search_amount_apply_list_success",
+      "title": "正常搜索额度申请列表",
+      "request": {
+        "category_id": "1"
+      },
+      "expected": {
+        "expected_status_code": 200,
+        "expected_text": "OK",
+        "expected_status": 200
+      }
+    }
+  ]
+}

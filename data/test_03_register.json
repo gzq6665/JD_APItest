@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "case_id": "register_success",
+      "title": "正常注册",
+      "request": {
+        "verify_code": "8888",
+        "phone_code": "666666",
+        "password": "",
+        "dy_server": "on"
+      },
+      "expected": {
+        "expected_status_code": 200,
+        "expected_text": "注册成功",
+        "expected_status": 200
+      }
+    },
+    {
+      "case_id": "register_wrong_phone_code",
+      "title": "短信验证码错误时注册失败",
+      "request": {
+        "verify_code": "8888",
+        "phone_code": "000000",
+        "password": "",
+        "dy_server": "on"
+      },
+      "expected": {
+        "expected_status_code": 200,
+        "expected_text": "验证码错误",
+        "expected_status": 100
+      }
+    }
+  ]
+}

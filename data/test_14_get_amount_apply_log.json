@@ -1,0 +1,14 @@
+{
+  "cases": [
+    {
+      "case_id": "get_amount_apply_log_success",
+      "title": "正常查看额度申请记录",
+      "expected": {
+        "expected_status_code": 200,
+        "expected_text": "OK",
+        "expected_approval_text": "通过",
+        "expected_status": 200
+      }
+    }
+  ]
+}

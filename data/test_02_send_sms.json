@@ -1,0 +1,30 @@
+{
+  "cases": [
+    {
+      "case_id": "send_sms_success",
+      "title": "正常获取短信验证码",
+      "request": {
+        "img_verify_code": "8888",
+        "type": "reg"
+      },
+      "expected": {
+        "expected_status_code": 200,
+        "expected_text": "短信发送成功",
+        "expected_status": 200
+      }
+    },
+    {
+      "case_id": "send_sms_wrong_img_verify_code",
+      "title": "图片验证码错误时获取短信验证码失败",
+      "request": {
+        "img_verify_code": "0000",
+        "type": "reg"
+      },
+      "expected": {
+        "expected_status_code": 200,
+        "expected_text": "图片验证码错误",
+        "expected_status": 100
+      }
+    }
+  ]
+}

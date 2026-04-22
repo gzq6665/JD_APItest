@@ -1,0 +1,23 @@
+{
+  "cases": [
+    {
+      "case_id": "approve_realname_success",
+      "title": "正常实名认证",
+      "precondition": "logged_in",
+      "expected": {
+        "expected_status_code": 200,
+        "expected_text": "提交成功",
+        "expected_status": 200
+      }
+    },
+    {
+      "case_id": "approve_realname_without_login",
+      "title": "未登录时实名认证跳转登录页",
+      "precondition": "no_login",
+      "expected": {
+        "expected_status_code": 200,
+        "expected_text": "用户登录"
+      }
+    }
+  ]
+}
