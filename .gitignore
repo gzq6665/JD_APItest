@@ -20,6 +20,10 @@ report/
 allure-results/
 allure-report/
 
+# 运行日志（UI 项目运行时生成）
+log/
+*.log
+
 # IDE
 .idea/
 .vscode/

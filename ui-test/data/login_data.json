@@ -1,0 +1,81 @@
+{
+  "credentials": {
+    "valid_username": "13386948296",
+    "valid_password": "a123456",
+    "captcha_fixed": "666666"
+  },
+  "cases": [
+    {
+      "case_id": "login_001",
+      "title": "正确用户名正确密码登录",
+      "username": "${VALID_USERNAME}",
+      "password": "${VALID_PASSWORD}",
+      "captcha": "${CAPTCHA_FIXED}",
+      "need_captcha": false,
+      "expect_text": "退出",
+      "expect_logout_text": "退出",
+      "expect_user_text": "你好，13386948296",
+      "expect_result": "success"
+    },
+    {
+      "case_id": "login_002",
+      "title": "用户名为空",
+      "username": "",
+      "password": "wrong_password_123",
+      "captcha": null,
+      "need_captcha": false,
+      "expect_text": "用户名或密码不能为空",
+      "expect_result": "fail"
+    },
+    {
+      "case_id": "login_003",
+      "title": "密码为空",
+      "username": "wrong_user_123",
+      "password": "",
+      "captcha": null,
+      "need_captcha": false,
+      "expect_text": "用户名或密码不能为空",
+      "expect_result": "fail"
+    },
+    {
+      "case_id": "login_004",
+      "title": "用户名正确密码错误",
+      "username": "${VALID_USERNAME}",
+      "password": "wrong_password_123",
+      "captcha": "${CAPTCHA_FIXED}",
+      "need_captcha": false,
+      "expect_text": "密码错误1次,达到3次将锁定账户",
+      "expect_result": "fail"
+    },
+    {
+      "case_id": "login_005",
+      "title": "用户名错误密码正确",
+      "username": "wrong_user_123",
+      "password": "${VALID_PASSWORD}",
+      "captcha": "${CAPTCHA_FIXED}",
+      "need_captcha": false,
+      "expect_text": "密码错误1次,达到3次将锁定账户",
+      "expect_result": "fail"
+    },
+    {
+      "case_id": "login_006",
+      "title": "触发验证码后验证码为空",
+      "username": "${VALID_USERNAME}",
+      "password": "${VALID_PASSWORD}",
+      "captcha": "",
+      "need_captcha": true,
+      "expect_text": "验证码不能为空",
+      "expect_result": "fail"
+    },
+    {
+      "case_id": "login_007",
+      "title": "触发验证码后验证码错误",
+      "username": "${VALID_USERNAME}",
+      "password": "${VALID_PASSWORD}",
+      "captcha": "1234",
+      "need_captcha": true,
+      "expect_text": "验证码有误",
+      "expect_result": "fail"
+    }
+  ]
+}

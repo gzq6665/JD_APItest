@@ -1,0 +1,17 @@
+﻿{
+  "cases": [
+    {
+      "case_id": "admin_amount_001",
+      "title": "后台审核客户端额度申请通过",
+      "member_name": "13386948296",
+      "income_amount": "5000",
+      "audit_status_value": "1",
+      "audit_remark": "后台自动化审核通过",
+      "captcha": "8888",
+      "log_status_value": "0",
+      "expect_status_text": "通过",
+      "expect_category_text": "信用额度",
+      "expect_pass_amount_text": "5000.00"
+    }
+  ]
+}

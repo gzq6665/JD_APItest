@@ -1,0 +1,53 @@
+{
+  "defaults": {
+    "apply_type": "first",
+    "valid_amount": "5000",
+    "valid_remark": "自动化测试申请额度说明",
+    "valid_verifycode": "8888"
+  },
+  "cases": [
+    {
+      "case_id": "amount_001",
+      "title": "申请额度为空",
+      "apply_type": "first",
+      "amount_account": "",
+      "remark": "${VALID_REMARK}",
+      "verifycode": "${VALID_VERIFYCODE}",
+      "expect_text": "申请额度不能为空",
+      "expect_result": "fail"
+    },
+    {
+      "case_id": "amount_002",
+      "title": "详情说明为空",
+      "apply_type": "first",
+      "amount_account": "${VALID_AMOUNT}",
+      "remark": "",
+      "verifycode": "${VALID_VERIFYCODE}",
+      "expect_text": "详情说明不能为空",
+      "expect_result": "fail"
+    },
+    {
+      "case_id": "amount_003",
+      "title": "验证码为空",
+      "apply_type": "first",
+      "amount_account": "${VALID_AMOUNT}",
+      "remark": "${VALID_REMARK}",
+      "verifycode": "",
+      "expect_text": "验证码不能为空",
+      "expect_result": "fail"
+    },
+    {
+      "case_id": "amount_004",
+      "title": "申请额度成功",
+      "apply_type": "first",
+      "amount_account": "${VALID_AMOUNT}",
+      "remark": "${VALID_REMARK}",
+      "verifycode": "${VALID_VERIFYCODE}",
+      "expect_text": "待审核",
+      "expect_type_text": "信用额度",
+      "expect_amount_text": "5,000.00",
+      "expect_status_text": "待审核",
+      "expect_result": "success"
+    }
+  ]
+}

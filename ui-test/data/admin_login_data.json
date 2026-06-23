@@ -1,0 +1,66 @@
+{
+  "credentials": {
+    "valid_username": "admin",
+    "valid_password": "HM_2026_test",
+    "captcha_fixed": "8888"
+  },
+  "cases": [
+    {
+      "case_id": "admin_001",
+      "title": "后台管理员登录成功",
+      "username": "${ADMIN_USERNAME}",
+      "password": "${ADMIN_PASSWORD}",
+      "captcha": "${ADMIN_CAPTCHA}",
+      "expect_text": "传智播客后台管理系统",
+      "expect_url": "http://121.43.169.97:8082/system/index/index",
+      "expect_brand_text": "传智播客后台管理系统",
+      "expect_user_text": "欢迎光临,\nadmin",
+      "expect_result": "success"
+    },
+    {
+      "case_id": "admin_002",
+      "title": "后台用户名为空",
+      "username": "",
+      "password": "${ADMIN_PASSWORD}",
+      "captcha": "${ADMIN_CAPTCHA}",
+      "expect_text": "用户名不能为空",
+      "expect_result": "fail"
+    },
+    {
+      "case_id": "admin_003",
+      "title": "后台密码为空",
+      "username": "${ADMIN_USERNAME}",
+      "password": "",
+      "captcha": "${ADMIN_CAPTCHA}",
+      "expect_text": "密码不能为空",
+      "expect_result": "fail"
+    },
+    {
+      "case_id": "admin_004",
+      "title": "后台验证码为空",
+      "username": "${ADMIN_USERNAME}",
+      "password": "${ADMIN_PASSWORD}",
+      "captcha": "",
+      "expect_text": "验证码不能为空",
+      "expect_result": "fail"
+    },
+    {
+      "case_id": "admin_005",
+      "title": "后台密码错误",
+      "username": "${ADMIN_USERNAME}",
+      "password": "wrong_pwd",
+      "captcha": "${ADMIN_CAPTCHA}",
+      "expect_text": "用户名/密码错误",
+      "expect_result": "fail"
+    },
+    {
+      "case_id": "admin_006",
+      "title": "后台验证码错误",
+      "username": "${ADMIN_USERNAME}",
+      "password": "${ADMIN_PASSWORD}",
+      "captcha": "1234",
+      "expect_text": "验证码错误",
+      "expect_result": "fail"
+    }
+  ]
+}

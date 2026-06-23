@@ -1,0 +1,37 @@
+{
+  "defaults": {
+    "valid_realname": "张三丰",
+    "valid_card_id": "110101199003071234"
+  },
+  "cases": [
+    {
+      "case_id": "open_001",
+      "title": "真实姓名和身份证号正确后进入立即开通步骤",
+      "realname": "${VALID_REALNAME}",
+      "card_id": "${VALID_CARD_ID}",
+      "expect_text": "立即开通",
+      "expect_button_text": "立即开通",
+      "expect_info_title_text": "开通第三方资金托管账户",
+      "expect_redirect_url": "http://121.43.169.97:8000/muser/publicRequests",
+      "expect_result": "success"
+    },
+    {
+      "case_id": "open_002",
+      "title": "真实姓名为空",
+      "realname": "",
+      "card_id": "${VALID_CARD_ID}",
+      "expect_text": "不能为空",
+      "expect_error_field": "realname",
+      "expect_result": "fail"
+    },
+    {
+      "case_id": "open_003",
+      "title": "身份证号为空",
+      "realname": "${VALID_REALNAME}",
+      "card_id": "",
+      "expect_text": "不能为空",
+      "expect_error_field": "card_id",
+      "expect_result": "fail"
+    }
+  ]
+}

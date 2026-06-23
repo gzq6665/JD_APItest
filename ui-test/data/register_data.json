@@ -1,0 +1,54 @@
+{
+  "defaults": {
+    "image_code_fixed": "8888",
+    "sms_code_fixed": "666666",
+    "valid_password": "Abc12345"
+  },
+  "cases": [
+    {
+      "case_id": "reg_001",
+      "title": "11位手机号和合规密码注册成功",
+      "phone": "${RANDOM_PHONE}",
+      "password": "${VALID_PASSWORD}",
+      "image_code": "${IMAGE_CODE_FIXED}",
+      "sms_code": "${SMS_CODE_FIXED}",
+      "send_sms": true,
+      "expect_text": "恭喜您，注册成功！",
+      "expect_title_text": "恭喜您，注册成功！",
+      "expect_result": "success"
+    },
+    {
+      "case_id": "reg_002",
+      "title": "手机号为空",
+      "phone": "",
+      "password": "${VALID_PASSWORD}",
+      "image_code": "${IMAGE_CODE_FIXED}",
+      "sms_code": "${SMS_CODE_FIXED}",
+      "send_sms": false,
+      "expect_text": "手机号码不能为空",
+      "expect_result": "fail"
+    },
+    {
+      "case_id": "reg_003",
+      "title": "密码为纯数字",
+      "phone": "${RANDOM_PHONE}",
+      "password": "12345678",
+      "image_code": "${IMAGE_CODE_FIXED}",
+      "sms_code": "${SMS_CODE_FIXED}",
+      "send_sms": false,
+      "expect_text": "不能输入纯数字",
+      "expect_result": "fail"
+    },
+    {
+      "case_id": "reg_004",
+      "title": "密码为纯字母",
+      "phone": "${RANDOM_PHONE}",
+      "password": "abcdefgh",
+      "image_code": "${IMAGE_CODE_FIXED}",
+      "sms_code": "${SMS_CODE_FIXED}",
+      "send_sms": false,
+      "expect_text": "不能输入纯字母",
+      "expect_result": "fail"
+    }
+  ]
+}

@@ -1,99 +1,46 @@
-# HRJD 接口自动化测试
+# JD 自动化测试项目集
 
-本项目使用 `pytest + requests` 封装接口自动化测试。
+本仓库包含针对同一金融借贷业务系统（HRJD / 传智播客实训项目）的两套自动化测试工程，分别覆盖**接口层**与**UI 层**。
 
-项目结构与特性：
+| 子项目 | 目录 | 技术栈 | 说明 |
+| --- | --- | --- | --- |
+| 接口自动化测试 | [`api-test/`](api-test/) | pytest + requests + Allure | 14 个接口测试脚本，参数化 + fixture 前后置 |
+| UI 自动化测试 | [`ui-test/`](ui-test/) | pytest + Selenium + POM + Allure | 6 条端到端业务流程，页面对象模型设计 |
 
-- `tests/`：14 个独立接口测试脚本
-- `data/`：测试数据文件
-- `api/`：接口请求脚本与响应断言脚本
-- 使用 `pytest.mark.parametrize` 参数化读取 JSON 测试数据
-- 使用 `fixture + yield` 处理前后置和资源释放
-- 支持生成离线 Allure 测试报告
+## api-test —— 接口自动化测试
 
-## 目录说明
+- `pytest + requests` 封装接口请求与响应断言
+- `@pytest.mark.parametrize` 参数化读取 JSON 测试数据
+- `fixture + yield` 处理前后置依赖与资源释放
+- 支持生成离线 Allure 报告
+- 覆盖注册、登录、实名认证、开户、额度申请、后台审核等 14 个接口
 
-- `api/`：接口请求与响应断言封装。
-- `data/`：按接口拆分的 JSON 测试数据。
-- `scripts/`：测试辅助脚本，例如生成 Allure 报告。
-- `utils/`：配置、HTTP 客户端、上下文模型、随机数据与 JSON 数据加载。
-- `tests/`：14 个接口测试脚本。
+详见 [api-test/README.md](api-test/README.md)。
 
-## 运行前准备
+## ui-test —— UI 自动化测试
 
-运行前需要通过环境变量指定测试环境地址（仓库中不内置真实环境地址）：
+- 基于 **Selenium + Page Object Model（页面对象模型）** 分层设计
+  - `base/`：浏览器驱动工厂与基础页面封装
+  - `page/`：各业务页面的元素与操作封装
+  - `script/`：测试用例脚本
+  - `data/`：JSON 测试数据
+- 覆盖用户注册、登录、开户、借款额度申请、后台登录、后台额度审核等 6 条核心业务流程
+- 使用 `conftest.py` fixture 管理驱动生命周期与失败截图
+- 支持生成 Allure 报告
 
-- `BASE_URL`：前台系统地址，对应 Postman 中的 `{{base_url}}`
-- `ADMIN_BASE_URL`：后台系统地址，对应 Postman 中的 `{{base_url2}}`
+## 运行方式
 
-PowerShell 示例：
-
-```powershell
-$env:BASE_URL = "http://your-front-host"
-$env:ADMIN_BASE_URL = "http://your-admin-host"
-```
-
-安装依赖：
+两个子项目均为独立的 pytest 工程，进入对应目录后安装依赖并运行：
 
 ```powershell
+# 接口测试
+cd api-test
 python -m pip install -r requirements.txt
-```
+python -m pytest -s -v
 
-执行测试：
-
-```powershell
+# UI 测试（需本地安装 Chrome 及对应 chromedriver）
+cd ui-test
 python -m pytest -s -v
 ```
 
-执行前请先设置 `BASE_URL` 与 `ADMIN_BASE_URL` 环境变量,指向你自己的测试环境。
-
-## 生成离线 Allure 报告
-
-直接执行：
-
-```powershell
-python .\scripts\generate_allure_report.py
-```
-
-或者执行快捷脚本：
-
-```powershell
-.\run_allure_report.ps1
-```
-
-生成完成后，离线报告位于：
-
-```text
-report\allure-report\index.html
-```
-
-原始结果文件位于：
-
-```text
-report\allure-results
-```
-
-## 参数化说明
-
-每个接口脚本都通过 `@pytest.mark.parametrize(..., indirect=True)` 读取对应 JSON 文件中的 `cases` 列表。
-
-- `tests/` 中的脚本负责声明参数化入口。
-- `data/test_*.json` 中存放该接口的请求参数和断言期望。
-- `conftest.py` 中的 fixture 负责前置依赖、调用接口、执行断言、处理后置资源释放。
-
-## 当前 14 个接口脚本
-
-1. `test_01_get_register_image_code.py`
-2. `test_02_send_sms.py`
-3. `test_03_register.py`
-4. `test_04_login.py`
-5. `test_05_is_login.py`
-6. `test_06_approve_realname.py`
-7. `test_07_get_approve_info.py`
-8. `test_08_open_account.py`
-9. `test_09_apply_amount.py`
-10. `test_10_admin_login.py`
-11. `test_11_search_amount_apply_list.py`
-12. `test_12_open_amount_verify_page.py`
-13. `test_13_submit_amount_verify.py`
-14. `test_14_get_amount_apply_log.py`
+> 说明：测试目标为公开的实训练习环境，测试数据中的账号为练习站共享账号，非真实生产凭据。Allure 报告、运行日志、缓存等运行时生成文件不纳入版本管理。
