@@ -26,8 +26,8 @@ def get_settings() -> Settings:
     timeout = int(os.getenv("HTTP_TIMEOUT", "15"))
     verify_ssl = _to_bool(os.getenv("VERIFY_SSL"), default=False)
     return Settings(
-        base_url=os.getenv("BASE_URL", "http://121.43.169.97:8081").rstrip("/"),
-        admin_base_url=os.getenv("ADMIN_BASE_URL", "http://121.43.169.97:8082").rstrip("/"),
+        base_url=os.getenv("BASE_URL", "http://your-front-host:8081").rstrip("/"),
+        admin_base_url=os.getenv("ADMIN_BASE_URL", "http://your-admin-host:8082").rstrip("/"),
         timeout=timeout,
         verify_ssl=verify_ssl,
     )

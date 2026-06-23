@@ -1,7 +1,8 @@
 # HRJD 接口自动化测试
 
-本项目根据 `HRJD.postman_collection.json` 中的接口业务流，使用 `pytest + requests` 重新封装接口自动化测试。
-当前按你的要求调整为：
+本项目使用 `pytest + requests` 封装接口自动化测试。
+
+项目结构与特性：
 
 - `tests/`：14 个独立接口测试脚本
 - `data/`：测试数据文件
@@ -20,12 +21,7 @@
 
 ## 运行前准备
 
-默认会使用当前项目的测试环境地址：
-
-- `BASE_URL=http://121.43.169.97:8081`
-- `ADMIN_BASE_URL=http://121.43.169.97:8082`
-
-如果你想切换到其他环境，也可以覆盖这两个环境变量：
+运行前需要通过环境变量指定测试环境地址（仓库中不内置真实环境地址）：
 
 - `BASE_URL`：前台系统地址，对应 Postman 中的 `{{base_url}}`
 - `ADMIN_BASE_URL`：后台系统地址，对应 Postman 中的 `{{base_url2}}`
@@ -49,7 +45,7 @@ python -m pip install -r requirements.txt
 python -m pytest -s -v
 ```
 
-如果使用默认环境，直接执行即可；如果切换环境，再设置对应环境变量。
+执行前请先设置 `BASE_URL` 与 `ADMIN_BASE_URL` 环境变量,指向你自己的测试环境。
 
 ## 生成离线 Allure 报告
 

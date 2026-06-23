@@ -10,7 +10,7 @@
       },
       "request": {
         "username": "admin",
-        "password": "HM_2023_test",
+        "password": "your_admin_password",
         "valicode": "8888"
       },
       "expected": {
